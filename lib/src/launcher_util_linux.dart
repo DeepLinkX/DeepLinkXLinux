@@ -8,6 +8,12 @@ import 'package:url_launcher/url_launcher.dart' as url_launcher;
 /// for launching URLs and applications. It currently throws an error for
 /// methods that are not implemented on the Linux platform.
 class LauncherUtilLinux extends LauncherUtilPlatform {
+
+  /// Registers this class as the default instance of [LauncherUtilLinux].
+  static void registerWith() {
+    LauncherUtilPlatform.instance = LauncherUtilLinux();
+  }
+
   @override
   Future<bool> launchUrl(final Uri uri) async =>
       url_launcher.launchUrl(uri, mode: url_launcher.LaunchMode.externalApplication);
